@@ -5,7 +5,14 @@
 using namespace std;
 
 int main(){
-	hashmap myMap;
+	OurMap myMap;
+
+	int mapSize = myMap.size();
+	string name,num;
+	vector<string> deletedNumbers; 
+	vector<string> numbers;
+	vector<string> phoneNumber;
+
 	cout<<"=================================="<<endl;
 	cout<<"Phone-Book"<<endl;
 	cout<<"Display Contacts (Press 1)"<<endl;
@@ -14,11 +21,8 @@ int main(){
 	cout<<"Search Contact (Press 4)"<<endl;
 	cout<<"=================================="<<endl;
 	int n;
-	cin<<n;
-	int mapSize = myMap.size();
-	string name,num;
-	vector<string> deletedNumbers; 
-	vector<string> numbers;
+	cin>>n;
+	
 	switch(n){
 		case 1://display
 			    if (mapSize == 0) {
@@ -42,12 +46,12 @@ int main(){
 			    }
 		    break;
 		case 2://insert
-
 			   cout<<"Enter name";
 			   cin>>name;
 			   cout<<"Enter Number:"<<endl;
 			   cin>>num;
-			   myMap.insert(name,num);
+			   phoneNumber.push_back(num);
+			   myMap.insert(name, phoneNumber);
 		    break;
 		case 3://delete
 			    cout << "Enter name: ";

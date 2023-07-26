@@ -5,12 +5,12 @@ using namespace std;
 class MapNode{
 	public:
 		string key;
-		Vector<string> value;
+		vector<string> value;
 		MapNode* next;
-		MapNode(string key,Vector<string> value){
+		MapNode(string key,vector<string> value){
 			this->key = key;
 			this->value = value;
-			next = null;
+			next = NULL;
 		}
 
 		~MapNode(){
@@ -18,7 +18,7 @@ class MapNode{
 		}
 };
 
-template <typename V>
+
 class OurMap{
 	public:
 		MapNode** buckets;
@@ -62,12 +62,12 @@ class OurMap{
 			return count;
 		}
 
-		void insert(string key,string value){
+		void insert(string key,vector<string> value){
 			int bucketIndex = getBucketIndex(key);
 			MapNode* head = buckets[bucketIndex];
 			while(head!=NULL){
 				if(head->key == key){
-					head->value.push_back(value);
+					head->value.push_back(value[0]);
 					return;
 				}
 				head = head->next;
