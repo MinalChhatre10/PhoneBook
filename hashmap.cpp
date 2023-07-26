@@ -20,9 +20,10 @@ class MapNode{
 
 template <typename V>
 class OurMap{
-	MapNode** buckets;
-	int count;
-	int numBuckets;
+	public:
+		MapNode** buckets;
+		int count;
+		int numBuckets;
 
 	public:
 		OurMap(){
@@ -91,28 +92,28 @@ class OurMap{
 			return vector<string>(); 
 		}
 
-		V remove(string key){
+		vector<string> remove(string key){
 			int bucketIndex = getBucketIndex(key);
 			MapNode* head = buckets[bucketIndex];
 			MapNode* prev = NULL;
 			while(head!=NULL){
 				if(head->key == key){
-					if(prev==NULL){
+						if(prev==NULL){
 						buckets[bucketIndex]= head->next;
-					}
-					else{
-						prev->next = head->next;
-					}
-					V returnValue = head->value;
-					head->next = NULL;
-					delete head;
-					count--;
-					return returnValue;
+						}
+						else{
+							prev->next = head->next;
+						}
+						vector<string> returnValue = head->value;
+						head->next = NULL;
+						delete head;
+						count--;
+						return returnValue;
 				}
 				prev = head;
 				head=head->next;
 			}
-			return 0;
+			return vector<string>();
 		}
 
 };
