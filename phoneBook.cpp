@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 #include "hashmap.cpp"
 using namespace std;
 
@@ -14,9 +15,12 @@ int main(){
 	cout<<"=================================="<<endl;
 	int n;
 	cin<<n;
+	int mapSize = myMap.size();
+	string name,num;
+	vector<string> deletedNumbers; 
+	vector<string> numbers;
 	switch(n){
 		case 1://display
-			    int mapSize = myMap.size();
 			    if (mapSize == 0) {
 			        cout << "Phone book is empty." << endl;
 			    } else {
@@ -38,7 +42,7 @@ int main(){
 			    }
 		    break;
 		case 2://insert
-		       string name,num;
+
 			   cout<<"Enter name";
 			   cin>>name;
 			   cout<<"Enter Number:"<<endl;
@@ -46,22 +50,18 @@ int main(){
 			   myMap.insert(name,num);
 		    break;
 		case 3://delete
-		    	string name;
-			    cout<<"Enter name";
-			    cin>>name;
-			    	vector<string> numbers = myMap.remove(name);
-			    	cout<<"Deleted Contact: "<<name<<": "<<endl;
-			    	for (int i = 0; i < numbers.size(); ++i)
-			    	{
-			    		cout<<numbers[i]<<endl;
-			    	}
-			   
-		    break;
+			    cout << "Enter name: ";
+	            cin >> name;
+	            deletedNumbers = myMap.remove(name);
+	            cout << "Deleted Contact: " << name << ": " << endl;
+	            for (int i = 0; i < deletedNumbers.size(); ++i) {
+	                cout << deletedNumbers[i] << endl;
+	            }
+            break;
 		case 4://search
-				string name;
 			    cout<<"Enter name";
 			    cin>>name;
-			    vector<string> numbers = myMap.getValue(name);
+			    numbers = myMap.getValue(name);
 			    if(numbers.size()==0){
 			    	cout<<"No record found for contact: "<<name<<"."<<endl;
 			    }
