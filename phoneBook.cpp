@@ -85,10 +85,17 @@ int main()
 			cout << "Enter name: ";
 			cin >> name;
 			deletedNumbers = myMap.remove(name);
+			if (deletedNumbers.size() == 0)
+			{
+				cout << "No record found to delete contact: " << name << "." << endl;
+			}
+			else
+			{
 			cout << "Deleted Contact: " << name << ": " << endl;
 			for (int i = 0; i < deletedNumbers.size(); ++i)
 			{
 				cout << deletedNumbers[i] << endl;
+			}
 			}
 			cout << "=================================" << endl;
 			break;
